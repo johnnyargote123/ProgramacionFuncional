@@ -232,16 +232,23 @@ fun metodo5(prods: IList<Producto>): Double {
 //-------------------------------------------------------------------
 
 fun metodo16(rects: IList<Rectangulo>): Int {
-    TODO("¿Cuántos rectángulos de la lista son cuadrados?")
+    val rectangulo_cuadrado = rects.filter { it.altura == it.base }.count()
+    return rectangulo_cuadrado
 }
 
 fun metodo17(rects: IList<Rectangulo>): Double {
-    TODO("Promedio del área de los rectangulos cuya base es inferior a su altura")
+
+    val rectangulo_nuevo = rects.filter { it.base < it.altura }
+    val area_rectangulo_nuevo = rectangulo_nuevo.map { it.area() }.sum()/rectangulo_nuevo.count()
+    return area_rectangulo_nuevo
+    //"Promedio del área de los rectangulos cuya base es inferior a su altura"
 }
 
 fun metodo18(rects: IList<Rectangulo>): Rectangulo {
-    TODO("Obtener el rectangulo de mayor área de la lista")
 
+
+    val rectangulo_mayor = rects.maxWith(compareBy(Rectangulo::area))
+    return rectangulo_mayor!!
 }
 
 fun metodo19(rects: IList<Rectangulo>, areaMin: Double): IList<Double> {
